@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,7 +9,10 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  constructor(private data: DataService) {}
+  constructor(private data: DataService, private router: Router) {}
 
+  login() {
+    this.router.navigate(['categorias']);
+  }
 
 }
