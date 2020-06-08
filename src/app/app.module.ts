@@ -1,3 +1,4 @@
+import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
 import { CategoriaService } from './services/domain/categoria.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,7 +24,8 @@ import { AppRoutingModule } from './app-routing.module';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    CategoriaService
+    CategoriaService,
+    ErrorInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })
