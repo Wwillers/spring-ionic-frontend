@@ -1,3 +1,4 @@
+import { CredenciaisDTO } from './../../models/credenciais.dto';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,9 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  creds: CredenciaisDTO = {
+    email: "",
+    senha: ""
+  };
+
   constructor(private router: Router) {}
 
   login() {
+    console.log(this.creds);
     this.router.navigate(['categorias']);
   }
 
