@@ -1,3 +1,4 @@
+import { StorageService } from './services/storage.service';
 import { AuthService } from './services/auth.service';
 import { ErrorInterceptorProvider } from './interceptors/error-interceptor';
 import { CategoriaService } from './services/domain/categoria.service';
@@ -27,7 +28,8 @@ import { AppRoutingModule } from './app-routing.module';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     CategoriaService,
     ErrorInterceptorProvider,
-    AuthService
+    AuthService,
+    StorageService
   ],
   bootstrap: [AppComponent]
 })

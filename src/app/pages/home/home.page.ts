@@ -23,7 +23,7 @@ export class HomePage {
   login() {
     this.authService.autheticate(this.creds)
       .subscribe(response => {
-        console.log(response.headers.get('Authorization'))
+        this.authService.successfulLogin(response.headers.get('Authorization'))
         this.router.navigate(['categorias']);
       },
       error => {});
