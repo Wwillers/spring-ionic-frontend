@@ -7,20 +7,19 @@ import { Injectable } from '@angular/core';
 export class ErrorInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log("Passou no interceptor")
+        console.log("Passou no interceptor");
         return next.handle(req)
-            .pipe(catchError((error: HttpErrorResponse) => {
+            .pipe(
+                catchError((error: HttpErrorResponse) => {
                 let errorObj = error;
                 if (errorObj.error) {
-                    errorObj = errorObj.error
+                    errorObj = errorObj.error;
                 }
-                if (!errorObj.status) {
-                    errorObj = JSON.parse(errorObj.error);
-                }
-
+                //if (!errorObj.status) {
+                    //errorObj = JSON.parse(errorObj.error);
+                //}
                 console.log("Erro detectado pelo interceptor:");
                 console.log(errorObj);
-
                 return throwError(errorObj);
             })) as any;
     }

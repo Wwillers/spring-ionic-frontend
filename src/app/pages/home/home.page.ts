@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { CredenciaisDTO } from './../../models/credenciais.dto';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,11 +16,17 @@ export class HomePage {
     senha: ""
   };
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService) {}
 
   login() {
-    console.log(this.creds);
-    this.router.navigate(['categorias']);
-  }
+    this.authService.autheticate(this.creds)
+      .subscribe(response => {
+        console.log(response.headers.get('Authorization'))
+        this.router.navigate(['categorias']);
+      },
+      error => {});
+  };
 
 }
