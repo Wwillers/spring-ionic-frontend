@@ -1,14 +1,19 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
+    <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-      </ion-buttons>
+    </ion-buttons>
     <ion-title>
       Perfil
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding="true">
-  {{ email }}
+<ion-content>
+  <!--Pendente avatar img css-->
+  <ion-avatar class="image-center">
+    <img class="circle" [src]="cliente?.imgUrl || '../../assets/imgs/avatarblank.png'">
+  </ion-avatar>
+    <h2 class="ion-text-center">{{ cliente?.nome }}</h2>
+    <p class="ion-text-center">{{ cliente?.email }}</p>
 </ion-content>
