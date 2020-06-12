@@ -2,6 +2,8 @@ import { AuthService } from './../../services/auth.service';
 import { CredenciaisDTO } from './../../models/credenciais.dto';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { STORAGE_KEYS } from 'src/app/config/storage_keys.config';
+import { StorageService } from 'src/app/services/storage.service';
 
 
 @Component({
@@ -18,15 +20,27 @@ export class HomePage {
 
   constructor(
     private router: Router,
-    private authService: AuthService) {}
+    private authService: AuthService,
+    private storage: StorageService) {}
 
   ngOnInit() {
-    this.authService.refreshToken()
+    this.refreshToken();
+  }
+
+  //Precisa de melhorias
+  refreshToken() {
+    let localUser = this.storage.getLocalUser();
+    if(localUser != null) {
+      this.authService.refreshToken()
       .subscribe(response => {
         this.authService.successfulLogin(response.headers.get('Authorization'));
         this.router.navigate(['categorias']);
       },
       error => {});
+    }
+    else {
+      console.log('Usuário precisa realizar login')
+    }
   }
 
   login() {
