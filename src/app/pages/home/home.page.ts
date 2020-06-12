@@ -20,6 +20,15 @@ export class HomePage {
     private router: Router,
     private authService: AuthService) {}
 
+  ngOnInit() {
+    this.authService.refreshToken()
+      .subscribe(response => {
+        this.authService.successfulLogin(response.headers.get('Authorization'));
+        this.router.navigate(['categorias']);
+      },
+      error => {});
+  }
+
   login() {
     this.authService.autheticate(this.creds)
       .subscribe(response => {
