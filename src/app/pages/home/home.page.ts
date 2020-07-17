@@ -50,6 +50,10 @@ export class HomePage {
         this.router.navigate(['categorias']);
       },
       error => {});
-  };
+  }
+
+  signup() {
+    this.router.navigate(['signup']);
+  }
 
 }
