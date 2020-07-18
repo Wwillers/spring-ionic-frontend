@@ -61,6 +61,6 @@ export class SignupPage implements OnInit {
 
   signupUser() {
     console.log("Enviou o form!");
-  };
+  }
 
 }

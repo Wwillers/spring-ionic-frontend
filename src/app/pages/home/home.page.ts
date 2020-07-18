@@ -2,7 +2,6 @@ import { AuthService } from './../../services/auth.service';
 import { CredenciaisDTO } from './../../models/credenciais.dto';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { STORAGE_KEYS } from 'src/app/config/storage_keys.config';
 import { StorageService } from 'src/app/services/storage.service';
 
 
