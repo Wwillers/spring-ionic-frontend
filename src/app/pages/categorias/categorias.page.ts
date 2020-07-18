@@ -2,6 +2,7 @@ import { API_CONFIG } from './../../config/api.config';
 import { CategoriaDTO } from './../../models/categoria.dto';
 import { CategoriaService } from './../../services/domain/categoria.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categorias',
@@ -14,7 +15,7 @@ export class CategoriasPage implements OnInit {
 
   items: CategoriaDTO[];
 
-  constructor(private categoriaService: CategoriaService) { }
+  constructor(private categoriaService: CategoriaService, private router: Router) { }
 
   ngOnInit() {
     this.categoriaService.findAll()
@@ -22,6 +23,10 @@ export class CategoriasPage implements OnInit {
         this.items = response;
       },
       error => {})
+  }
+
+  showProducts() {
+    this.router.navigate(['produtos']);
   }
 
 }
