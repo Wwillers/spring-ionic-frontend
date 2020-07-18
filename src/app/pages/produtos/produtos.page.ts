@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoDTO } from 'src/app/models/produto.dto';
+import { ProdutoService } from 'src/app/services/domain/produto.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-produtos',
@@ -10,21 +12,15 @@ export class ProdutosPage implements OnInit {
 
   items: ProdutoDTO[];
 
-  constructor() { }
+  constructor(private produtoService: ProdutoService, private activedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.items = [
-      {
-        id: "1",
-        nome: 'Mouse',
-        preco: 80.00
+    let categoria_id = this.activedRoute.snapshot.queryParamMap.get('categorias');
+    this.produtoService.findByCategoria(categoria_id)
+      .subscribe(response => {
+        this.items = response['content'];
       },
-      {
-        id: "2",
-        nome: 'Teclado',
-        preco: 120.00
-      }
-    ]
+      error => {});
   }
 
 }

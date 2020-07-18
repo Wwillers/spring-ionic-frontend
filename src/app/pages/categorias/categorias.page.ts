@@ -25,8 +25,8 @@ export class CategoriasPage implements OnInit {
       error => {})
   }
 
-  showProducts() {
-    this.router.navigate(['produtos']);
+  showProducts(categoria_id: string) {
+    this.router.navigate(['produtos'], {queryParams: {categorias: categoria_id}});
   }
 
 }

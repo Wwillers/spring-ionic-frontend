@@ -15,6 +15,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
+import { ProdutoService } from './services/domain/produto.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +34,8 @@ import { AuthInterceptorProvider } from './interceptors/auth-interceptor';
     ErrorInterceptorProvider,
     AuthService,
     StorageService,
-    ClienteService
+    ClienteService,
+    ProdutoService
   ],
   bootstrap: [AppComponent]
 })
