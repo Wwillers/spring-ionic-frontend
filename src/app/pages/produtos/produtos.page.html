@@ -13,7 +13,7 @@
   <ion-list>
     <ion-item button *ngFor="let item of items">
       <ion-thumbnail slot="start">
-        <img src="/assets/imgs/prod.jpg" alt="Produto">
+        <img [src]= "item.imageUrl || '/assets/imgs/prod.jpg'" alt="Produto">
       </ion-thumbnail>
       <ion-label>
         <h2>{{item.nome}}</h2>
