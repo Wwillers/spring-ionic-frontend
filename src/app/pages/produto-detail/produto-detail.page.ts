@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoDTO } from 'src/app/models/produto.dto';
 import { ProdutoService } from 'src/app/services/domain/produto.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { API_CONFIG } from 'src/app/config/api.config';
+import { CartService } from 'src/app/services/domain/cart.service';
 
 @Component({
   selector: 'app-produto-detail',
@@ -13,7 +14,11 @@ export class ProdutoDetailPage implements OnInit {
 
   item: ProdutoDTO;
 
-  constructor(private produtoService: ProdutoService, private activedRoute: ActivatedRoute) { }
+  constructor(
+    private produtoService: ProdutoService, 
+    private activedRoute: ActivatedRoute, 
+    private cartService: CartService,
+    private router: Router) { }
 
   ngOnInit() {
     let produto_id = this.activedRoute.snapshot.queryParamMap.get('produtos');
@@ -31,6 +36,11 @@ export class ProdutoDetailPage implements OnInit {
         this.item.imageUrl = `${API_CONFIG.bucketBaseUrl}/prod${this.item.id}.jpg`;
       },
       error => {});
+  }
+
+  addToCart(produto: ProdutoDTO) {
+    this.cartService.addProduto(produto);
+    this.router.navigate(['cart']);
   }
 
 }
