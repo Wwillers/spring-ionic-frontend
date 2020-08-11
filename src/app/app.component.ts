@@ -15,14 +15,19 @@ export class AppComponent {
 
   navigate: any = [
     {
+      title: "Perfil",
+      url: "/profile",
+      icon: "person-outline"
+    },
+    {
       title: "Categorias",
       url: "/categorias",
       icon: "gift-outline"
     },
     {
-      title: "Perfil",
-      url: "/profile",
-      icon: "person-outline"
+      title: "Carrinho",
+      url: "/cart",
+      icon: "cart-outline"
     },
     {
       title: "Logout",

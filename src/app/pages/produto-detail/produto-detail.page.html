@@ -9,7 +9,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding="true">
+  <ion-fab vertical="top" horizontal="end" edge slot="fixed">
+    <ion-fab-button size="small" href="/cart">
+      <ion-icon name="cart-outline"></ion-icon>
+  </ion-fab-button>
+  </ion-fab>
   <ion-card>
     <img [src]="item?.imageUrl || '/assets/imgs/prod.jpg'" alt="ProductImg" />
     <ion-card-content>
